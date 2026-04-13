@@ -1,17 +1,51 @@
-<nav class="navbar navbar-expand-lg navbar-dark container py-3">
-    <a class="navbar-brand fw-semibold" href="/">ITSA Segurity</a>
+@* Shared/NavMenu.razor *@
+<header class="header">
+    <div class="container">
+        <nav class="navbar">
+            <NavLink href="/" class="logo">
+                ITSA <span>Segurity</span>
+            </NavLink>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavMenu" aria-controls="mainNavMenu" aria-expanded="false" aria-label="Alternar navegación">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+            <button class="hamburger" @onclick="ToggleMenu" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
 
-    <div id="mainNavMenu" class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-            <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
-            <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-        </ul>
+            <ul class="nav-menu @(_menuOpen ? "open" : "")">
+                <li>
+                    <NavLink href="/" class="nav-link" Match="NavLinkMatch.All" @onclick="CloseMenu">
+                        Inicio
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/servicios" class="nav-link" Match="NavLinkMatch.Prefix" @onclick="CloseMenu">
+                        Servicios
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/tecnologia" class="nav-link" Match="NavLinkMatch.Prefix" @onclick="CloseMenu">
+                        Tecnología
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/contacto" class="nav-link" Match="NavLinkMatch.Prefix" @onclick="CloseMenu">
+                        Contacto
+                    </NavLink>
+                </li>
+            </ul>
+        </nav>
     </div>
-</nav>
+</header>
+
+@code {
+    private bool _menuOpen = false;
+
+    private void ToggleMenu()
+    {
+        _menuOpen = !_menuOpen;
+    }
+
+    private void CloseMenu()
+    {
+        _menuOpen = false;
+    }
+}
