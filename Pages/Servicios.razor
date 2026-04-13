@@ -3,22 +3,45 @@
 
 <PageTitle>Servicios | ITSA Segurity</PageTitle>
 
-<section class="servicios-hero section" id="servicios-hero">
+<section class="hero servicios-hero" id="servicios-hero">
     <div id="particles-js-servicios"></div>
-    <div class="container hero-content">
-        <h1 class="servicios-title">Nuestros <span class="accent">servicios</span></h1>
+
+    <div class="hero-content container">
+        <span class="section-subtitle">· Soluciones digitales ·</span>
+
+        <h1 class="servicios-title">
+            Nuestros <span class="accent">servicios</span>
+        </h1>
+
         <p class="servicios-subtitle">
             Construimos productos digitales de alta calidad, integramos IA y potenciamos tu negocio con tecnología avanzada.
         </p>
+
+        <div class="hero-cta">
+            <NavLink href="/contacto" class="btn btn-primary">
+                Solicitar asesoría
+            </NavLink>
+            <NavLink href="/tecnologia" class="btn btn-outline">
+                Ver stack tecnológico
+            </NavLink>
+        </div>
     </div>
 </section>
 
-<section class="servicios-grid-section section">
+<section class="section servicios-grid-section reveal">
     <div class="container">
-        <div class="servicios-grid">
+        <span class="section-subtitle">· Qué hacemos ·</span>
+        <h2 class="section-title">
+            Servicios pensados para <span class="accent">crecer contigo</span>
+        </h2>
+        <p class="text-center intro-copy">
+            Desde presencia web hasta plataformas a medida, seguridad digital y automatización, diseñamos soluciones con visión estratégica y ejecución sólida.
+        </p>
+
+        <div class="servicios-grid servicios-grid-6">
             @foreach (var item in Services)
             {
-                <div class="servicio-card">
+                <div class="servicio-card servicio-card-lg">
                     <i class="@item.Icon card-icon"></i>
                     <h3>@item.Title</h3>
                     <p class="card-description">@item.Description</p>
@@ -31,14 +54,55 @@
     </div>
 </section>
 
-<section class="metodologia-section section">
+<section class="section reveal" style="padding-top: 0;">
     <div class="container">
-        <h2 class="section-title">Cómo <span class="accent">trabajamos</span></h2>
-        <p class="section-subtitle">
+        <div class="glass-card services-highlight">
+            <div class="grid-2">
+                <div>
+                    <span class="section-subtitle">· Enfoque integral ·</span>
+                    <h2 class="section-title">
+                        Tecnología, estrategia y <span class="accent">ejecución</span>
+                    </h2>
+                    <p class="section-paragraph">
+                        No trabajamos solo sobre requerimientos técnicos. Analizamos el contexto de negocio,
+                        la experiencia del usuario, la seguridad del sistema y la escalabilidad futura.
+                    </p>
+                </div>
+
+                <div class="services-highlight-list">
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Arquitectura orientada a crecimiento</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Diseño visual profesional y moderno</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Seguridad incorporada desde el inicio</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Automatización y eficiencia operativa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="metodologia-section section reveal">
+    <div class="container">
+        <span class="section-subtitle">· Cómo trabajamos ·</span>
+        <h2 class="section-title">
+            Un proceso claro, ágil y <span class="accent">medible</span>
+        </h2>
+        <p class="text-center intro-copy">
             Un proceso probado que combina agilidad, transparencia y comunicación constante.
         </p>
 
-        <div class="metodologia-grid">
+        <div class="metodologia-grid metodologia-grid-4">
             @foreach (var step in Steps)
             {
                 <div class="metodologia-item">
@@ -51,10 +115,17 @@
     </div>
 </section>
 
-<section class="tecnologias-section section">
+<section class="tecnologias-section section reveal">
     <div class="container">
-        <h2 class="section-title">Tecnologías que <span class="accent">utilizamos</span></h2>
-        <div class="tech-cloud">
+        <span class="section-subtitle">· Stack ·</span>
+        <h2 class="section-title">
+            Tecnologías que <span class="accent">utilizamos</span>
+        </h2>
+        <p class="text-center intro-copy">
+            Seleccionamos herramientas modernas según el objetivo del proyecto, no por moda.
+        </p>
+
+        <div class="tech-cloud tech-cloud-centered">
             @foreach (var tech in TechStack)
             {
                 <span class="tech-item">@tech</span>
@@ -63,14 +134,36 @@
     </div>
 </section>
 
-<section class="cta-section section">
+<section class="section reveal" style="padding-top: 0;">
     <div class="container">
-        <div class="cta-content">
+        <div class="stats-grid">
+            @foreach (var metric in Metrics)
+            {
+                <div class="stat-large">
+                    <span class="stat-number">@metric.Number</span><span>@metric.Suffix</span>
+                    <p>@metric.Label</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="cta-section section reveal">
+    <div class="container">
+        <div class="glass-card cta-content cta-content-centered">
+            <span class="section-subtitle">· Siguiente paso ·</span>
             <h2>¿Listo para transformar tu idea en un producto real?</h2>
             <p>
                 Hablemos de tu proyecto. Sin compromiso, solo una conversación para entender cómo podemos ayudarte.
             </p>
-            <NavLink href="/contacto" class="btn btn-primary">Agenda una llamada</NavLink>
+            <div class="hero-cta" style="justify-content:center;">
+                <NavLink href="/contacto" class="btn btn-primary">
+                    Agenda una llamada
+                </NavLink>
+                <NavLink href="/metodologia" class="btn btn-outline">
+                    Ver metodología
+                </NavLink>
+            </div>
         </div>
     </div>
 </section>
@@ -85,6 +178,7 @@
             _initialized = true;
             await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js-servicios");
             await JS.InvokeVoidAsync("itsaPages.initGsap");
+            await JS.InvokeVoidAsync("siteEffects.initReveal");
         }
     }
 
@@ -112,6 +206,14 @@
         "AWS", "MongoDB", "PostgreSQL", "TensorFlow", "Flutter", "GitHub"
     ];
 
+    private readonly List<MetricItem> Metrics =
+    [
+        new("120", "+", "Proyectos y soluciones entregadas"),
+        new("98", "%", "Enfoque orientado a satisfacción"),
+        new("24", "/7", "Disponibilidad y continuidad")
+    ];
+
     private sealed record ServiceItem(string Title, string Icon, string Description);
     private sealed record StepItem(string Number, string Title, string Description);
+    private sealed record MetricItem(string Number, string Suffix, string Label);
 }
