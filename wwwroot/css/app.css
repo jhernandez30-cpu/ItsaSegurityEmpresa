@@ -753,4 +753,77 @@ img {
     .nav-menu {
         gap: .75rem;
     }
+
+    /* ===== HOME REFINEMENTS ===== */
+
+.intro-copy {
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    color: var(--text-secondary);
+}
+
+.presentation-panel {
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.presentation-panel h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.presentation-panel p {
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.presentation-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.services-home-grid {
+    margin-top: 2.5rem !important;
+}
+
+.service-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.cta-final-home {
+    text-align: center;
+    padding: 2.25rem;
+}
+
+.cta-final-home h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.cta-final-home p {
+    max-width: 720px;
+    margin: 0 auto 1.5rem;
+    color: var(--text-secondary);
+}
+
+.testimonial-card p,
+.miembro-card p,
+.timeline-content p,
+.servicio-card p,
+.stat-item p,
+.stat-large p {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 991.98px) {
+    .presentation-panel {
+        min-height: auto;
+    }
+}
 }
