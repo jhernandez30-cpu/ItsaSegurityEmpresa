@@ -1,0 +1,177 @@
+@page "/contacto"
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Components.Forms
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+<PageTitle>Contacto | ITSA Segurity</PageTitle>
+
+<section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, rgba(0,10,20,0.85) 0%, rgba(0,30,50,0.7) 100%);">
+    <div id="particles-js"></div>
+    <div class="hero-content container">
+        <h1 class="page-title">Contacta con <span class="accent">nosotros</span></h1>
+        <p class="page-subtitle">Estamos a un mensaje de distancia.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container grid-2">
+        <div class="contact-info-large glass-card">
+            <h2>Información de contacto</h2>
+            <p><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:+50589871374">+505 8987 1374</a></p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:info@itsasegurity.com">info@itsasegurity.com</a></p>
+
+            <div class="social-large">
+                <a href="https://www.instagram.com/it_segurity" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/185VZEYC35/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@it._segurity" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/50589871374" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <EditForm EditContext="_editContext" OnValidSubmit="SubmitAsync" class="contact-form">
+            <DataAnnotationsValidator />
+
+            <div class="form-group">
+                <InputText id="name" class="form-input" @bind-Value="_model.Name" />
+                <label for="name">Nombre completo</label>
+                <ValidationMessage For="@(() => _model.Name)" />
+            </div>
+
+            <div class="form-group">
+                <InputText id="email" class="form-input" @bind-Value="_model.Email" />
+                <label for="email">Correo electrónico</label>
+                <ValidationMessage For="@(() => _model.Email)" />
+            </div>
+
+            <div class="form-group">
+                <InputText id="subject" class="form-input" @bind-Value="_model.Subject" />
+                <label for="subject">Asunto (opcional)</label>
+                <ValidationMessage For="@(() => _model.Subject)" />
+            </div>
+
+            <div class="form-group-row">
+                <label for="service">Tipo de servicio</label>
+                <InputSelect id="service" class="form-select" @bind-Value="_model.Service">
+                    <option value="">Selecciona un servicio</option>
+                    <option value="desarrollo-web">Desarrollo Web</option>
+                    <option value="software-medida">Software a medida</option>
+                    <option value="ciberseguridad">Ciberseguridad</option>
+                    <option value="marketing-digital">Marketing Digital</option>
+                    <option value="ia-datos">IA & Datos</option>
+                    <option value="consultoria">Consultoría</option>
+                </InputSelect>
+            </div>
+            <ValidationMessage For="@(() => _model.Service)" />
+
+            <div class="form-group">
+                <InputTextArea id="message" class="form-input" rows="5" @bind-Value="_model.Message" />
+                <label for="message">Mensaje</label>
+                <ValidationMessage For="@(() => _model.Message)" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" disabled="@_sending">
+                @(_sending ? "Enviando..." : "Enviar mensaje")
+            </button>
+
+            @if (!string.IsNullOrWhiteSpace(_statusMessage))
+            {
+                <div class="form-status" style="display:block">
+                    <p>@_statusMessage</p>
+                </div>
+            }
+        </EditForm>
+    </div>
+</section>
+
+@code {
+    private readonly ContactFormModel _model = new();
+    private EditContext _editContext = default!;
+    private bool _initialized;
+    private bool _sending;
+    private string _statusMessage = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        _editContext = new EditContext(_model);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_initialized)
+        {
+            _initialized = true;
+            await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
+        }
+    }
+
+    private async Task SubmitAsync()
+    {
+        _sending = true;
+        _statusMessage = string.Empty;
+
+        try
+        {
+            var payload = new Dictionary<string, string>
+            {
+                ["name"] = _model.Name,
+                ["email"] = _model.Email,
+                ["_subject"] = string.IsNullOrWhiteSpace(_model.Subject) ? "Nuevo mensaje desde ITSA Segurity" : _model.Subject,
+                ["service"] = _model.Service,
+                ["message"] = _model.Message
+            };
+
+            using var content = new FormUrlEncodedContent(payload);
+            using var request = new HttpRequestMessage(HttpMethod.Post, "https://formspree.io/f/xnjojrwb")
+            {
+                Content = content
+            };
+
+            request.Headers.Accept.ParseAdd("application/json");
+
+            using var response = await Http.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                _statusMessage = "Mensaje enviado correctamente. Te responderemos pronto.";
+                _editContext = new EditContext(new ContactFormModel());
+            }
+            else
+            {
+                _statusMessage = "No se pudo enviar el mensaje. Intenta nuevamente.";
+            }
+        }
+        catch
+        {
+            _statusMessage = "Ocurrió un error al enviar el formulario.";
+        }
+        finally
+        {
+            _sending = false;
+            StateHasChanged();
+        }
+    }
+
+    private sealed class ContactFormModel
+    {
+        [Required(ErrorMessage = "El nombre es obligatorio.")]
+        [StringLength(120)]
+        public string Name { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "El correo es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Correo no válido.")]
+        public string Email { get; set; } = string.Empty;
+
+        [StringLength(150)]
+        public string Subject { get; set; } = "Nuevo mensaje desde ITSA Segurity";
+
+        [Required(ErrorMessage = "Selecciona un servicio.")]
+        public string Service { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "El mensaje es obligatorio.")]
+        [MinLength(10, ErrorMessage = "El mensaje debe tener al menos 10 caracteres.")]
+        [StringLength(2000)]
+        public string Message { get; set; } = string.Empty;
+    }
+}
