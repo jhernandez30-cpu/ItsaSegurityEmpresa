@@ -1,0 +1,52 @@
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
+<div class="app-shell">
+    <header class="topbar sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark container py-3">
+            <a class="navbar-brand fw-semibold" href="/">ITSA Segurity</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="mainNav" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <button class="btn btn-outline-light btn-sm rounded-pill px-3" @onclick="ToggleTheme">
+                            @(_darkMode ? "☀ Claro" : "🌙 Oscuro")
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @Body
+    </main>
+</div>
+
+@code {
+    private bool _darkMode = true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _darkMode = await JS.InvokeAsync<bool>("siteTheme.init");
+            await JS.InvokeVoidAsync("siteEffects.initReveal");
+            StateHasChanged();
+        }
+    }
+
+    private async Task ToggleTheme()
+    {
+        _darkMode = await JS.InvokeAsync<bool>("siteTheme.toggle");
+    }
+}

@@ -1,0 +1,2 @@
+C:\Users\herna\Desktop\ItsaSegurityEmpresa\bin\Release\net8.0\publish\emcc-props.json
+C:\Users\herna\Desktop\ItsaSegurityEmpresa\bin\Release\net8.0\publish\web.config

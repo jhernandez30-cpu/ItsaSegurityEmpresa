@@ -1,0 +1,21 @@
+<section id="proyectos" class="section-spacing reveal">
+    <div class="container">
+        <SectionHeader
+            Kicker="Galería de proyectos"
+            Title="Trabajo destacado"
+            Copy="Tarjetas desacopladas del contenido para presentar verticales, casos o soluciones empresariales." />
+
+        <div class="row g-4">
+            @foreach (var project in Data.Projects)
+            {
+                <div class="col-md-6 col-xl-4">
+                    <ProjectCard Item="project" />
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public PortfolioData Data { get; set; } = default!;
+}
