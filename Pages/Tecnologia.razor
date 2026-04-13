@@ -3,11 +3,12 @@
 
 <PageTitle>Tecnología | ITSA Segurity</PageTitle>
 
-<section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, rgba(0,10,20,0.85) 0%, rgba(0,30,50,0.7) 100%);">
-    <div id="three-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+<section class="hero tecnologia-hero">
+    <div id="three-container" style="position: absolute; inset: 0; z-index: 0;"></div>
     <div id="particles-js" style="z-index: 1;"></div>
 
     <div class="hero-content container" style="position: relative; z-index: 2;">
+        <span class="section-subtitle">· Stack tecnológico ·</span>
         <h1 class="page-title">Tecnología <span class="accent">de punta</span></h1>
         <p class="page-subtitle">
             Herramientas modernas, arquitecturas escalables y buenas prácticas para soluciones robustas.
@@ -15,19 +16,22 @@
     </div>
 </section>
 
-<section class="section">
+<section class="section reveal">
     <div class="container">
         <span class="section-subtitle">· Desarrollo Web ·</span>
         <h2 class="section-title">Tecnologías para <span class="accent">experiencias digitales</span></h2>
-        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
-            Construimos sitios y aplicaciones web modernas, rápidas y accesibles.
+        <p class="text-center intro-copy">
+            Construimos sitios y aplicaciones web modernas, rápidas, accesibles y preparadas para crecer.
         </p>
 
-        <div class="grid-3">
+        <div class="grid-3 tech-grid">
             @foreach (var category in WebCategories)
             {
-                <div class="categoria-tech">
-                    <h3 class="categoria-title"><i class="@category.Icon"></i> @category.Title</h3>
+                <div class="categoria-tech categoria-tech-lg">
+                    <h3 class="categoria-title">
+                        <i class="@category.Icon"></i> @category.Title
+                    </h3>
+
                     <div class="tech-cloud" style="justify-content: flex-start;">
                         @foreach (var item in category.Items)
                         {
@@ -40,19 +44,22 @@
     </div>
 </section>
 
-<section class="section" style="background: #0a0c12;">
+<section class="section reveal" style="background: #0a0c12;">
     <div class="container">
         <span class="section-subtitle">· Desarrollo de Software ·</span>
         <h2 class="section-title">Soluciones <span class="accent">escalables y robustas</span></h2>
-        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
-            Aplicaciones de escritorio, móviles y cloud con arquitecturas modernas.
+        <p class="text-center intro-copy">
+            Aplicaciones empresariales, plataformas cloud y herramientas internas con arquitecturas modernas.
         </p>
 
-        <div class="grid-3">
+        <div class="grid-3 tech-grid">
             @foreach (var category in SoftwareCategories)
             {
-                <div class="categoria-tech">
-                    <h3 class="categoria-title"><i class="@category.Icon"></i> @category.Title</h3>
+                <div class="categoria-tech categoria-tech-lg">
+                    <h3 class="categoria-title">
+                        <i class="@category.Icon"></i> @category.Title
+                    </h3>
+
                     <div class="tech-cloud" style="justify-content: flex-start;">
                         @foreach (var item in category.Items)
                         {
@@ -65,19 +72,22 @@
     </div>
 </section>
 
-<section class="section">
+<section class="section reveal">
     <div class="container">
         <span class="section-subtitle">· Ciberseguridad ·</span>
         <h2 class="section-title">Protección <span class="accent">proactiva</span></h2>
-        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
-            Herramientas y técnicas para auditar, proteger y monitorizar entornos digitales.
+        <p class="text-center intro-copy">
+            Herramientas y técnicas para auditar, proteger y monitorizar entornos digitales de forma continua.
         </p>
 
-        <div class="grid-3">
+        <div class="grid-3 tech-grid">
             @foreach (var category in SecurityCategories)
             {
-                <div class="categoria-tech">
-                    <h3 class="categoria-title"><i class="@category.Icon"></i> @category.Title</h3>
+                <div class="categoria-tech categoria-tech-lg">
+                    <h3 class="categoria-title">
+                        <i class="@category.Icon"></i> @category.Title
+                    </h3>
+
                     <div class="tech-cloud" style="justify-content: flex-start;">
                         @foreach (var item in category.Items)
                         {
@@ -90,53 +100,111 @@
     </div>
 </section>
 
-<section class="section" style="background: #0a0c12;">
+<section class="section reveal" style="padding-top: 0;">
+    <div class="container">
+        <div class="glass-card technology-highlight">
+            <div class="grid-2">
+                <div>
+                    <span class="section-subtitle">· Filosofía técnica ·</span>
+                    <h2 class="section-title">Elegimos tecnología según el <span class="accent">objetivo</span></h2>
+                    <p class="section-paragraph">
+                        No usamos herramientas por tendencia, sino por encaje real con el producto, el negocio y la escalabilidad esperada.
+                    </p>
+                </div>
+
+                <div class="services-highlight-list">
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Stack alineado a objetivos reales</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Arquitectura preparada para evolucionar</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Balance entre rendimiento y mantenibilidad</span>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Seguridad integrada desde el diseño</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section reveal" style="background: #0a0c12;">
     <div class="container">
         <h2 class="section-title text-center">Arquitecturas <span class="accent">escalables</span></h2>
-        <p class="text-center" style="margin-bottom: 3rem; color: var(--text-dim);">
-            Diseñamos sistemas preparados para crecer con las mejores prácticas.
+        <p class="text-center intro-copy">
+            Diseñamos sistemas preparados para crecer con resiliencia, observabilidad y separación clara de responsabilidades.
         </p>
 
-        <div class="grid-3">
+        <div class="grid-3 architecture-grid">
             @foreach (var item in Architectures)
             {
-                <div class="glass-card" style="text-align: center;">
-                    <i class="@item.Icon" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;"></i>
-                    <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">@item.Title</h3>
-                    <p style="color: var(--text-dim);">@item.Description</p>
+                <div class="glass-card architecture-card">
+                    <i class="@item.Icon architecture-icon"></i>
+                    <h3>@item.Title</h3>
+                    <p>@item.Description</p>
                 </div>
             }
         </div>
     </div>
 </section>
 
-<section class="section">
+<section class="section reveal">
     <div class="container">
         <span class="section-subtitle">· Workflow ·</span>
         <h2 class="section-title">Integración y despliegue <span class="accent">continuos</span></h2>
-        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
-            Automatizamos pruebas, builds y despliegues con las mejores herramientas. Control de versiones con Git.
+        <p class="text-center intro-copy">
+            Automatizamos pruebas, builds y despliegues con herramientas modernas y buenas prácticas de control de versiones.
         </p>
-        <div class="tech-cloud" style="justify-content: center;">
-            @foreach (var item in CiCd)
+
+        <div class="glass-card cicd-panel">
+            <div class="tech-cloud tech-cloud-centered">
+                @foreach (var item in CiCd)
+                {
+                    <span class="tech-item">@item</span>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section reveal" style="padding-top: 0;">
+    <div class="container">
+        <div class="stats-grid">
+            @foreach (var metric in Metrics)
             {
-                <span class="tech-item">@item</span>
+                <div class="stat-large">
+                    <span class="stat-number">@metric.Number</span><span>@metric.Suffix</span>
+                    <p>@metric.Label</p>
+                </div>
             }
         </div>
     </div>
 </section>
 
-<section class="section" style="background: linear-gradient(135deg, #000408, #001c28); text-align: center;">
+<section class="section reveal">
     <div class="container">
-        <h2 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 1.5rem;">
-            ¿Listo para construir algo <span class="accent">increíble</span>?
-        </h2>
-        <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 2rem;">
-            Contáctanos y descubre cómo nuestra tecnología puede impulsar tu proyecto.
-        </p>
-        <NavLink href="/contacto" class="btn btn-primary">
-            Hablemos <i class="fas fa-arrow-right"></i>
-        </NavLink>
+        <div class="glass-card cta-content cta-content-centered">
+            <span class="section-subtitle">· Siguiente paso ·</span>
+            <h2>¿Listo para construir algo <span class="accent">increíble</span>?</h2>
+            <p>
+                Contáctanos y descubre cómo nuestra tecnología puede impulsar tu proyecto.
+            </p>
+            <div class="hero-cta" style="justify-content:center;">
+                <NavLink href="/contacto" class="btn btn-primary">
+                    Hablemos <i class="fas fa-arrow-right"></i>
+                </NavLink>
+                <NavLink href="/servicios" class="btn btn-outline">
+                    Ver servicios
+                </NavLink>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -151,6 +219,7 @@
             await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
             await JS.InvokeVoidAsync("itsaPages.initGsap");
             await JS.InvokeVoidAsync("itsaPages.initThreeBackground", "three-container");
+            await JS.InvokeVoidAsync("siteEffects.initReveal");
         }
     }
 
@@ -178,8 +247,8 @@
     private readonly List<ArchitectureItem> Architectures =
     [
         new("Microservicios", "fas fa-cubes", "Componentes independientes, desacoplados y escalables individualmente."),
-        new("Serverless", "fas fa-cloud-upload-alt", "Ejecución de código sin gestionar servidores, pago por uso."),
-        new("Seguridad por capas", "fas fa-shield-alt", "Protección en cada nivel: red, aplicación, datos.")
+        new("Serverless", "fas fa-cloud-upload-alt", "Ejecución de código sin gestionar servidores, con enfoque eficiente y flexible."),
+        new("Seguridad por capas", "fas fa-shield-alt", "Protección en cada nivel: red, aplicación, identidad, infraestructura y datos.")
     ];
 
     private readonly List<string> CiCd =
@@ -187,6 +256,14 @@
         "GitHub Actions", "GitLab CI", "Jenkins", "CircleCI", "Git"
     ];
 
+    private readonly List<MetricItem> Metrics =
+    [
+        new("3", " áreas", "Cobertura tecnológica clave"),
+        new("15", "+", "Herramientas y prácticas integradas"),
+        new("24", "/7", "Visión orientada a continuidad")
+    ];
+
     private sealed record TechCategory(string Title, string Icon, List<string> Items);
     private sealed record ArchitectureItem(string Title, string Icon, string Description);
+    private sealed record MetricItem(string Number, string Suffix, string Label);
 }
