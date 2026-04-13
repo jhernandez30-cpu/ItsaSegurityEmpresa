@@ -255,67 +255,75 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!_initialized)
+        if (firstRender && !_initialized)
         {
             _initialized = true;
-            await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
-            await JS.InvokeVoidAsync("itsaPages.initGsap");
-            await JS.InvokeVoidAsync("itsaPages.initThreeBackground", "three-container");
-            await JS.InvokeVoidAsync("siteEffects.initReveal");
+            try
+            {
+                await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
+                await JS.InvokeVoidAsync("itsaPages.initGsap");
+                await JS.InvokeVoidAsync("itsaPages.initThreeBackground", "three-container");
+                await JS.InvokeVoidAsync("siteEffects.initReveal");
+            }
+            catch (Exception ex)
+            {
+                // Opcional: manejar errores si las funciones JS no existen aún
+                Console.WriteLine($"Error inicializando efectos: {ex.Message}");
+            }
         }
     }
 
-    private readonly List<StatItem> PresentationStats =
-    [
+    private readonly List<StatItem> PresentationStats = new()
+    {
         new("6", "+", "Años de experiencia"),
         new("120", "+", "Proyectos exitosos"),
         new("15", "+", "Especialistas")
-    ];
+    };
 
-    private readonly List<ServiceItem> Services =
-    [
+    private readonly List<ServiceItem> Services = new()
+    {
         new("Desarrollo Web", "fas fa-laptop-code", "Sitios y aplicaciones con narrativa visual, alto rendimiento y las últimas tecnologías frontend y backend."),
         new("Software a medida", "fas fa-cogs", "Aplicaciones de escritorio, móviles y cloud con arquitecturas escalables y metodologías ágiles."),
         new("Ciberseguridad", "fas fa-shield-halved", "Auditorías, pentesting, protección de datos y monitorización 24/7 para mantener tu negocio seguro."),
         new("Marketing Digital", "fas fa-bullseye", "Estrategias basadas en datos: SEO, SEM, redes sociales y automatización para maximizar conversiones.")
-    ];
+    };
 
-    private readonly List<TimelineItem> Timeline =
-    [
+    private readonly List<TimelineItem> Timeline = new()
+    {
         new("2020", "Nacimiento de ITSA", "Con la visión de fusionar tecnología y narrativa."),
         new("2022", "Expansión en ciberseguridad", "Certificaciones y alianzas estratégicas."),
         new("2026", "+120 proyectos", "Empresas nacionales confían en nosotros.")
-    ];
+    };
 
-    private readonly List<StatItem> MainStats =
-    [
+    private readonly List<StatItem> MainStats = new()
+    {
         new("98", "%", "Satisfacción cliente"),
         new("24", "/7", "Soporte continuo"),
         new("15", "+", "Premios innovación")
-    ];
+    };
 
-    private readonly List<TestimonialItem> Testimonials =
-    [
+    private readonly List<TestimonialItem> Testimonials = new()
+    {
         new("Laura Méndez", "CMO de InnovaCorp", "ITSA transformó nuestra presencia digital. El enfoque storytelling marcó la diferencia.", "https://randomuser.me/api/portraits/women/1.jpg"),
         new("Carlos Rivas", "CTO de FintechPro", "Su equipo de ciberseguridad evitó vulnerabilidades críticas. Altamente recomendados.", "https://randomuser.me/api/portraits/men/1.jpg"),
         new("Ana Soto", "Directora de Operaciones", "El desarrollo de software fue impecable, con entregas ágiles y calidad superior.", "https://randomuser.me/api/portraits/women/2.jpg")
-    ];
+    };
 
-    private readonly List<TeamMemberItem> Team =
-    [
+    private readonly List<TeamMemberItem> Team = new()
+    {
         new("Ing. Juan Pérez", "Director de Seguridad | CEH, CISSP", "https://randomuser.me/api/portraits/men/2.jpg", "#", "#", null),
         new("Dra. María López", "Especialista en Pentesting | OSCP", "https://randomuser.me/api/portraits/women/3.jpg", "#", null, "#"),
         new("Carlos Rivas", "Arquitecto Cloud | AWS Certified", "https://randomuser.me/api/portraits/men/3.jpg", "#", "#", null)
-    ];
+    };
 
-    private readonly List<CertificationItem> Certifications =
-    [
+    private readonly List<CertificationItem> Certifications = new()
+    {
         new("ISO 27001", "fas fa-certificate"),
         new("CEH (Certified Ethical Hacker)", "fas fa-shield-alt"),
         new("AWS Partner", "fab fa-aws"),
         new("Microsoft Partner", "fab fa-microsoft"),
         new("PCI DSS", "fas fa-lock")
-    ];
+    };
 
     private sealed record StatItem(string Number, string Suffix, string Label);
     private sealed record ServiceItem(string Title, string Icon, string Description);
