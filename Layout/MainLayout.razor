@@ -2,21 +2,49 @@
 @inject IJSRuntime JS
 
 <div class="app-shell">
-    <header class="topbar sticky-top">
+    <header class="header topbar sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark container py-3">
-            <a class="navbar-brand fw-semibold" href="/">ITSA Segurity</a>
+            <NavLink href="/" class="logo navbar-brand fw-semibold" Match="NavLinkMatch.All">
+                ITSA <span>Segurity</span>
+            </NavLink>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegación">
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                    aria-controls="mainNav"
+                    aria-expanded="false"
+                    aria-label="Alternar navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div id="mainNav" class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                <ul class="nav-menu navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <li class="nav-item">
+                        <NavLink href="/" Match="NavLinkMatch.All" class="nav-link">
+                            Inicio
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink href="/servicios" class="nav-link">
+                            Servicios
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink href="/tecnologia" class="nav-link">
+                            Tecnología
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink href="/metodologia" class="nav-link">
+                            Metodología
+                        </NavLink>
+                    </li>
+                    <li class="nav-item">
+                        <NavLink href="/contacto" class="nav-link">
+                            Contacto
+                        </NavLink>
+                    </li>
                     <li class="nav-item ms-lg-2">
                         <button class="btn btn-outline-light btn-sm rounded-pill px-3" @onclick="ToggleTheme">
                             @(_darkMode ? "☀ Claro" : "🌙 Oscuro")
@@ -30,6 +58,53 @@
     <main>
         @Body
     </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <NavLink href="/" class="logo" Match="NavLinkMatch.All">
+                        ITSA <span>Segurity</span>
+                    </NavLink>
+                    <p>Innovación digital con propósito.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h5>Empresa</h5>
+                    <ul>
+                        <li><NavLink href="/metodologia">Metodología</NavLink></li>
+                        <li><NavLink href="/tecnologia">Tecnología</NavLink></li>
+                        <li><NavLink href="/contacto">Contacto</NavLink></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                        <li><a href="#">Aviso legal</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h5>Redes</h5>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/it_segurity" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/185VZEYC35/" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@it._segurity" target="_blank" aria-label="TikTok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/50589871374" target="_blank" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ITSA Segurity. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
 </div>
 
 @code {
