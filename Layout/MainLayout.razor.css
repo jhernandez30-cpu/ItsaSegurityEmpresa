@@ -1,7 +1,15 @@
+/* Layout/MainLayout.razor.css */
+
 .app-shell {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: var(--bg-primary);
     color: var(--text-primary);
+}
+
+.app-shell > main {
+    flex: 1;
 }
 
 .topbar {
@@ -10,10 +18,57 @@
     border-bottom: 1px solid var(--border-color);
 }
 
-.nav-link {
-    color: var(--text-secondary) !important;
+/* Ajustes específicos para el footer dentro del layout */
+.footer {
+    padding: 4rem 0 2rem;
+    background: #060912;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
 }
 
-.nav-link:hover {
-    color: #fff !important;
+.footer .logo {
+    margin-bottom: 0.75rem;
+}
+
+.footer h4 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.footer p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Enlaces del footer */
+.footer a {
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: var(--accent);
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive para el footer */
+@media (max-width: 767.98px) {
+    .footer {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-grid {
+        gap: 2rem;
+    }
 }
