@@ -1,0 +1,76 @@
+@page "/metodologia"
+@inject IJSRuntime JS
+
+<PageTitle>Metodología | ITSA Segurity</PageTitle>
+
+<section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, rgba(0,10,20,0.85) 0%, rgba(0,30,50,0.7) 100%);">
+    <div id="three-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+    <div id="particles-js" style="z-index: 1;"></div>
+
+    <div class="hero-content container" style="position: relative; z-index: 2;">
+        <h1 class="page-title">Metodología <span class="accent">ágil</span></h1>
+        <p class="page-subtitle">Transparencia, iteración y valor continuo.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <span class="section-subtitle">· Nuestro proceso ·</span>
+        <h2 class="section-title">Cómo <span class="accent">trabajamos</span></h2>
+        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
+            Un enfoque probado que combina agilidad, transparencia y comunicación constante para entregar productos que superan expectativas.
+        </p>
+
+        <div class="metodologia-grid">
+            @foreach (var item in Steps)
+            {
+                <div class="metodologia-item">
+                    <span class="metodologia-number">@item.Number</span>
+                    <h4>@item.Title</h4>
+                    <p>@item.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: linear-gradient(135deg, #000408, #001c28); text-align: center;">
+    <div class="container">
+        <h2 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 1.5rem;">
+            ¿Listo para transformar tu idea en un <span class="accent">producto real</span>?
+        </h2>
+        <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 2rem;">
+            Aplica nuestra metodología a tu proyecto y obtén resultados tangibles desde el primer sprint.
+        </p>
+        <NavLink href="/contacto" class="btn btn-primary">
+            Hablemos <i class="fas fa-arrow-right"></i>
+        </NavLink>
+    </div>
+</section>
+
+@code {
+    private bool _initialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_initialized)
+        {
+            _initialized = true;
+            await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
+            await JS.InvokeVoidAsync("itsaPages.initGsap");
+            await JS.InvokeVoidAsync("itsaPages.initThreeBackground", "three-container");
+        }
+    }
+
+    private readonly List<MethodologyItem> Steps =
+    [
+        new("01", "Descubrimiento", "Entendemos tu visión, necesidades y objetivos de negocio. Realizamos entrevistas, análisis competitivo y definición de la hoja de ruta."),
+        new("02", "Diseño conceptual", "Wireframes, prototipos interactivos y narrativa visual. Validamos contigo cada detalle antes de escribir una línea de código."),
+        new("03", "Desarrollo iterativo", "Sprints semanales con entregas funcionales. Aplicamos Scrum y Kanban para mantener flexibilidad y entregar valor rápido."),
+        new("04", "Pruebas y calidad", "Testing continuo, auditorías de seguridad y optimización de rendimiento. Aseguramos que cada entrega cumpla los estándares más altos."),
+        new("05", "Lanzamiento", "Deploy monitoreado, estrategia de go-to-market y acompañamiento post-lanzamiento para garantizar una transición sin fricciones."),
+        new("06", "Evolución", "Soporte, mantenimiento y mejora continua basada en datos. Tu producto sigue creciendo con nuevas funcionalidades y optimizaciones.")
+    ];
+
+    private sealed record MethodologyItem(string Number, string Title, string Description);
+}

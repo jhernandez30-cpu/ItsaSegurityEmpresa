@@ -1,0 +1,19 @@
+.app-shell[b-hmz6p347ik] {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.topbar[b-hmz6p347ik] {
+    background: rgba(10, 15, 25, 0.72);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-link[b-hmz6p347ik] {
+    color: var(--text-secondary) !important;
+}
+
+.nav-link:hover[b-hmz6p347ik] {
+    color: #fff !important;
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="100%" stop-color="#14274a"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#4f7cff"/>
+      <stop offset="100%" stop-color="#00c2a8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="980" cy="110" r="120" fill="#4f7cff" opacity="0.2"/>
+  <circle cx="190" cy="510" r="160" fill="#00c2a8" opacity="0.12"/>
+  <rect x="84" y="84" width="116" height="116" rx="24" fill="#0f172a"/>
+  <path d="M116 112h68v14h-24v50h-20v-50h-24z" fill="url(#g)"/>
+  <circle cx="187" cy="187" r="11" fill="#00c2a8"/>
+  <text x="84" y="310" font-family="Inter, Arial, sans-serif" font-size="74" font-weight="700" fill="#f5f7fb">ITSA Segurity</text>
+  <text x="84" y="380" font-family="Inter, Arial, sans-serif" font-size="34" fill="#a8b3c7">Desarrollo web, software y ciberseguridad con estética profesional.</text>
+</svg>

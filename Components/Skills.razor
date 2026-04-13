@@ -1,0 +1,29 @@
+<section id="skills" class="section-spacing reveal">
+    <div class="container">
+        <SectionHeader
+            Kicker="Habilidades técnicas"
+            Title="Capacidades clave"
+            Copy="Componentización moderna, foco en experiencia visual y una base técnica preparada para evolucionar." />
+
+        <div class="row g-4">
+            @foreach (var group in Data.SkillGroups)
+            {
+                <div class="col-md-6 col-xl-3">
+                    <div class="glass-card h-100">
+                        <h3 class="h5 mb-3">@group.Title</h3>
+                        <ul class="list-unstyled d-grid gap-2 text-secondary mb-0">
+                            @foreach (var item in group.Items)
+                            {
+                                <li>• @item</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public PortfolioData Data { get; set; } = default!;
+}

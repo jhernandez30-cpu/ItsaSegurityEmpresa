@@ -1,0 +1,72 @@
+<section id="contacto" class="section-spacing reveal">
+    <div class="container">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-5">
+                <SectionHeader
+                    Kicker="Contacto"
+                    Title="@Data.ContactTitle"
+                    Copy="@Data.ContactDescription"
+                    WrapperClass="section-header text-start mb-0" />
+            </div>
+
+            <div class="col-lg-7">
+                <div class="glass-card">
+                    <EditForm Model="_model" OnValidSubmit="HandleValidSubmit">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary class="text-danger mb-3" />
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre</label>
+                                <InputText class="form-control form-control-lg custom-input" @bind-Value="_model.Name" />
+                                <ValidationMessage For="@(() => _model.Name)" class="text-danger small" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Correo</label>
+                                <InputText class="form-control form-control-lg custom-input" @bind-Value="_model.Email" />
+                                <ValidationMessage For="@(() => _model.Email)" class="text-danger small" />
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Empresa</label>
+                                <InputText class="form-control form-control-lg custom-input" @bind-Value="_model.Company" />
+                                <ValidationMessage For="@(() => _model.Company)" class="text-danger small" />
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Mensaje</label>
+                                <InputTextArea class="form-control custom-input" rows="6" @bind-Value="_model.Message" />
+                                <ValidationMessage For="@(() => _model.Message)" class="text-danger small" />
+                            </div>
+
+                            <div class="col-12 d-flex align-items-center gap-3 flex-wrap">
+                                <button type="submit" class="btn btn-primary btn-lg rounded-pill px-4">
+                                    Enviar consulta
+                                </button>
+
+                                @if (!string.IsNullOrWhiteSpace(_statusMessage))
+                                {
+                                    <span class="text-success">@_statusMessage</span>
+                                }
+                            </div>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    private readonly ContactFormModel _model = new();
+    private string _statusMessage = string.Empty;
+
+    [Parameter, EditorRequired] public PortfolioData Data { get; set; } = default!;
+
+    private Task HandleValidSubmit()
+    {
+        _statusMessage = "Formulario válido. Aquí puedes integrar Formspree, EmailJS o una API propia.";
+        return Task.CompletedTask;
+    }
+}
