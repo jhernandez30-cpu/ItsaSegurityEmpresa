@@ -1,0 +1,67 @@
+<section id="inicio" class="hero-section section-spacing reveal">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <span class="badge rounded-pill text-bg-dark border border-secondary-subtle px-3 py-2 mb-3">
+                    @Data.HeroBadge
+                </span>
+
+                <h1 class="display-4 fw-bold lh-sm mb-3">@Data.HeroTitle</h1>
+
+                <p class="lead text-secondary mb-4">
+                    @Data.HeroSubtitle
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="@Data.PrimaryCta" class="btn btn-primary btn-lg px-4 rounded-pill">
+                        Solicitar evaluación
+                    </a>
+                    <a href="@Data.SecondaryCta" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                        Ver proyectos
+                    </a>
+                </div>
+
+                <div class="row g-3 mt-4">
+                    <div class="col-6 col-md-4">
+                        <div class="metric-card">
+                            <strong>10+</strong>
+                            <span>Años de experiencia</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="metric-card">
+                            <strong>120+</strong>
+                            <span>Proyectos</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="metric-card">
+                            <strong>24/7</strong>
+                            <span>Soporte</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="hero-panel">
+                    <div class="hero-panel-glow"></div>
+                    <div class="hero-panel-content">
+                        <p class="text-uppercase small text-secondary mb-2">Soluciones integrales</p>
+                        <h3 class="fw-semibold mb-3">Presencia digital fuerte, limpia y profesional</h3>
+                        <ul class="list-unstyled m-0 d-grid gap-2 text-secondary">
+                            <li>• Desarrollo web y software</li>
+                            <li>• Escalabilidad y arquitectura</li>
+                            <li>• Seguridad y rendimiento</li>
+                            <li>• Comunicación visual de confianza</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public PortfolioData Data { get; set; } = default!;
+}

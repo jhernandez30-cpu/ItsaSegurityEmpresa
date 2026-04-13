@@ -1,0 +1,15 @@
+<div class="@WrapperClass">
+    <span class="section-kicker">@Kicker</span>
+    <h2 class="section-title">@Title</h2>
+    @if (!string.IsNullOrWhiteSpace(Copy))
+    {
+        <p class="section-copy">@Copy</p>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public string Kicker { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Title { get; set; } = string.Empty;
+    [Parameter] public string Copy { get; set; } = string.Empty;
+    [Parameter] public string WrapperClass { get; set; } = "section-header";
+}
