@@ -826,4 +826,78 @@ img {
         min-height: auto;
     }
 }
+
+    /* ===== SERVICIOS PAGE REFINEMENTS ===== */
+
+.servicios-hero {
+    min-height: 72vh;
+}
+
+.servicios-grid-6 {
+    margin-top: 2.5rem;
+}
+
+.servicio-card-lg {
+    min-height: 100%;
+}
+
+.services-highlight {
+    padding: 2rem;
+}
+
+.services-highlight-list {
+    display: grid;
+    gap: 1rem;
+    align-content: center;
+}
+
+.highlight-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.highlight-item i {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+.metodologia-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.tech-cloud-centered {
+    justify-content: center;
+}
+
+.cta-content-centered {
+    text-align: center;
+    padding: 2.25rem;
+}
+
+.cta-content-centered h2 {
+    margin-bottom: 1rem;
+}
+
+.cta-content-centered p {
+    max-width: 720px;
+    margin: 0 auto 1.5rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 991.98px) {
+    .metodologia-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .services-highlight {
+        padding: 1.5rem;
+    }
+
+    .servicios-hero {
+        min-height: 60vh;
+    }
+}
 }
