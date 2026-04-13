@@ -1,0 +1,117 @@
+@page "/servicios"
+@inject IJSRuntime JS
+
+<PageTitle>Servicios | ITSA Segurity</PageTitle>
+
+<section class="servicios-hero section" id="servicios-hero">
+    <div id="particles-js-servicios"></div>
+    <div class="container hero-content">
+        <h1 class="servicios-title">Nuestros <span class="accent">servicios</span></h1>
+        <p class="servicios-subtitle">
+            Construimos productos digitales de alta calidad, integramos IA y potenciamos tu negocio con tecnología avanzada.
+        </p>
+    </div>
+</section>
+
+<section class="servicios-grid-section section">
+    <div class="container">
+        <div class="servicios-grid">
+            @foreach (var item in Services)
+            {
+                <div class="servicio-card">
+                    <i class="@item.Icon card-icon"></i>
+                    <h3>@item.Title</h3>
+                    <p class="card-description">@item.Description</p>
+                    <NavLink href="/contacto" class="card-link">
+                        Explorar servicio <i class="fas fa-arrow-right"></i>
+                    </NavLink>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="metodologia-section section">
+    <div class="container">
+        <h2 class="section-title">Cómo <span class="accent">trabajamos</span></h2>
+        <p class="section-subtitle">
+            Un proceso probado que combina agilidad, transparencia y comunicación constante.
+        </p>
+
+        <div class="metodologia-grid">
+            @foreach (var step in Steps)
+            {
+                <div class="metodologia-item">
+                    <span class="metodologia-number">@step.Number</span>
+                    <h4>@step.Title</h4>
+                    <p>@step.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="tecnologias-section section">
+    <div class="container">
+        <h2 class="section-title">Tecnologías que <span class="accent">utilizamos</span></h2>
+        <div class="tech-cloud">
+            @foreach (var tech in TechStack)
+            {
+                <span class="tech-item">@tech</span>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="cta-section section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>¿Listo para transformar tu idea en un producto real?</h2>
+            <p>
+                Hablemos de tu proyecto. Sin compromiso, solo una conversación para entender cómo podemos ayudarte.
+            </p>
+            <NavLink href="/contacto" class="btn btn-primary">Agenda una llamada</NavLink>
+        </div>
+    </div>
+</section>
+
+@code {
+    private bool _initialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_initialized)
+        {
+            _initialized = true;
+            await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js-servicios");
+            await JS.InvokeVoidAsync("itsaPages.initGsap");
+        }
+    }
+
+    private readonly List<ServiceItem> Services =
+    [
+        new("Desarrollo Web", "fas fa-laptop-code", "Sitios y aplicaciones con narrativa visual, alto rendimiento y las últimas tecnologías frontend y backend."),
+        new("Software a medida", "fas fa-cogs", "Aplicaciones de escritorio, móviles y cloud con arquitecturas escalables y metodologías ágiles."),
+        new("Ciberseguridad", "fas fa-shield-halved", "Auditorías, pentesting, protección de datos y monitorización 24/7 para mantener tu negocio seguro."),
+        new("Marketing Digital", "fas fa-bullseye", "Estrategias basadas en datos: SEO, SEM, redes sociales y automatización para maximizar conversiones."),
+        new("IA & Datos", "fas fa-brain", "Integración de inteligencia artificial, análisis de datos y modelos predictivos para tu negocio."),
+        new("Consultoría", "fas fa-chart-pie", "Asesoramiento experto en arquitectura, tecnología y transformación digital para empresas.")
+    ];
+
+    private readonly List<StepItem> Steps =
+    [
+        new("01", "Discovery", "Entendemos tu visión, necesidades y objetivos de negocio."),
+        new("02", "Scope", "Planificamos la arquitectura y el roadmap del proyecto."),
+        new("03", "Build", "Construimos el producto de forma iterativa con demos semanales."),
+        new("04", "Launch", "Desplegamos a producción y aseguramos un lanzamiento exitoso.")
+    ];
+
+    private readonly List<string> TechStack =
+    [
+        "React", "Node.js", "Python", "TypeScript", "Next.js", "Docker",
+        "AWS", "MongoDB", "PostgreSQL", "TensorFlow", "Flutter", "GitHub"
+    ];
+
+    private sealed record ServiceItem(string Title, string Icon, string Description);
+    private sealed record StepItem(string Number, string Title, string Description);
+}
