@@ -2,56 +2,44 @@
 @inject IJSRuntime JS
 
 <div class="app-shell">
-    <header class="header topbar sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-dark container py-3">
-            <NavLink href="/" class="logo navbar-brand fw-semibold" Match="NavLinkMatch.All">
+    <header class="header topbar">
+        <nav class="navbar container">
+            <NavLink href="/" class="logo" Match="NavLinkMatch.All">
                 ITSA <span>Segurity</span>
             </NavLink>
 
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#mainNav"
-                    aria-controls="mainNav"
-                    aria-expanded="false"
-                    aria-label="Alternar navegación">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div id="mainNav" class="collapse navbar-collapse">
-                <ul class="nav-menu navbar-nav ms-auto align-items-lg-center gap-lg-2">
-                    <li class="nav-item">
-                        <NavLink href="/" Match="NavLinkMatch.All" class="nav-link">
-                            Inicio
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink href="/servicios" class="nav-link">
-                            Servicios
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink href="/tecnologia" class="nav-link">
-                            Tecnología
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink href="/metodologia" class="nav-link">
-                            Metodología
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink href="/contacto" class="nav-link">
-                            Contacto
-                        </NavLink>
-                    </li>
-                    <li class="nav-item ms-lg-2">
-                        <button class="btn btn-outline-light btn-sm rounded-pill px-3" @onclick="ToggleTheme">
-                            @(_darkMode ? "☀ Claro" : "🌙 Oscuro")
-                        </button>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav-menu">
+                <li>
+                    <NavLink href="/" Match="NavLinkMatch.All">
+                        Inicio
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/servicios">
+                        Servicios
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/tecnologia">
+                        Tecnología
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/metodologia">
+                        Metodología
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink href="/contacto">
+                        Contacto
+                    </NavLink>
+                </li>
+                <li>
+                    <button class="btn btn-outline" @onclick="ToggleTheme">
+                        @(_darkMode ? "☀ Claro" : "🌙 Oscuro")
+                    </button>
+                </li>
+            </ul>
         </nav>
     </header>
 
@@ -91,8 +79,8 @@
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="https://www.tiktok.com/@@it._segurity" target="_blank" aria-label="TikTok">
-    <i class="fab fa-tiktok"></i>
-</a>
+                            <i class="fab fa-tiktok"></i>
+                        </a>
                         <a href="https://wa.me/50589871374" target="_blank" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
