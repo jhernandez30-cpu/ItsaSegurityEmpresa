@@ -4,10 +4,12 @@
 <PageTitle>ITSA Segurity | Innovación digital</PageTitle>
 
 <section id="hero" class="hero">
-    <div id="three-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+    <div id="three-container" style="position: absolute; inset: 0; z-index: 0;"></div>
     <div id="particles-js"></div>
 
     <div class="hero-content container">
+        <span class="section-subtitle">· Innovación digital ·</span>
+
         <h1 class="hero-title">
             Construimos el futuro <br />
             <span class="gradient-text">digital</span> de tu negocio
@@ -21,7 +23,9 @@
             <NavLink href="/contacto" class="btn btn-primary">
                 Solicitar evaluación gratuita <i class="fas fa-shield-alt"></i>
             </NavLink>
-            <NavLink href="/servicios" class="btn btn-outline">Descubre cómo</NavLink>
+            <NavLink href="/servicios" class="btn btn-outline">
+                Descubre cómo
+            </NavLink>
         </div>
     </div>
 
@@ -31,11 +35,14 @@
     </div>
 </section>
 
-<section id="presentacion" class="section presentacion">
+<section id="presentacion" class="section presentacion reveal">
     <div class="container grid-2">
         <div class="presentacion-texto">
             <span class="section-subtitle">· ITSA Segurity ·</span>
-            <h2 class="section-title">Donde la tecnología cuenta <span class="accent">historias</span></h2>
+            <h2 class="section-title">
+                Donde la tecnología cuenta <span class="accent">historias</span>
+            </h2>
+
             <p class="section-paragraph">
                 No solo creamos código: diseñamos experiencias inmersivas que conectan con tu audiencia.
                 Fusionamos desarrollo, creatividad y seguridad para llevarte al siguiente nivel.
@@ -53,22 +60,41 @@
         </div>
 
         <div class="presentacion-visual">
-            <img src="assets/images/presentation.jpg" alt="ITSA tecnología" class="presentation-img" onerror="this.style.display='none'">
-            <div class="glass-card" style="margin-top: 1rem;">
-                <i class="fas fa-code"></i>
-                <i class="fas fa-shield-alt"></i>
-                <i class="fas fa-chart-line"></i>
+            <div class="glass-card presentation-panel">
+                <div class="presentation-icons">
+                    <i class="fas fa-code"></i>
+                    <i class="fas fa-shield-alt"></i>
+                    <i class="fas fa-chart-line"></i>
+                </div>
+
+                <h3>Soluciones integrales</h3>
+                <p>
+                    Combinamos estrategia, diseño, desarrollo y seguridad para construir productos digitales
+                    modernos, escalables y confiables.
+                </p>
+
+                <div class="tech-cloud" style="justify-content:flex-start; margin-top: 1rem;">
+                    <span class="tech-item">Desarrollo Web</span>
+                    <span class="tech-item">Software</span>
+                    <span class="tech-item">Ciberseguridad</span>
+                    <span class="tech-item">Marketing Digital</span>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="servicios" class="section servicios-grid-section" style="background: #0a0c12; padding: 80px 0;">
+<section id="servicios" class="section servicios-grid-section reveal">
     <div class="container">
         <span class="section-subtitle">· Nuestra experiencia ·</span>
-        <h2 class="section-title">Soluciones integrales <span class="accent">premium</span></h2>
+        <h2 class="section-title">
+            Soluciones integrales <span class="accent">premium</span>
+        </h2>
+        <p class="text-center intro-copy">
+            Servicios tecnológicos con enfoque en rendimiento, escalabilidad y presencia digital profesional.
+        </p>
 
-        <div class="servicios-grid" style="margin-top: 3rem;">
+        <div class="servicios-grid services-home-grid">
             @foreach (var service in Services)
             {
                 <div class="servicio-card">
@@ -82,7 +108,7 @@
             }
         </div>
 
-        <div class="service-cta" style="text-align: center; margin-top: 3rem;">
+        <div class="service-cta">
             <NavLink href="/servicios" class="btn btn-link">
                 Ver todos los servicios <i class="fas fa-long-arrow-alt-right"></i>
             </NavLink>
@@ -90,10 +116,12 @@
     </div>
 </section>
 
-<section id="experiencia" class="section experiencia">
+<section id="experiencia" class="section experiencia reveal">
     <div class="container">
         <span class="section-subtitle">· Nuestra historia ·</span>
-        <h2 class="section-title">Evolución <span class="accent">constante</span></h2>
+        <h2 class="section-title">
+            Evolución <span class="accent">constante</span>
+        </h2>
 
         <div class="timeline-grid">
             @foreach (var item in Timeline)
@@ -110,7 +138,7 @@
     </div>
 </section>
 
-<section id="estadisticas" class="section stats">
+<section id="estadisticas" class="section stats reveal">
     <div class="container">
         <div class="stats-grid">
             @foreach (var stat in MainStats)
@@ -124,50 +152,58 @@
     </div>
 </section>
 
-<section id="testimonios" class="section testimonios">
+<section id="testimonios" class="section testimonios reveal">
     <div class="container">
         <span class="section-subtitle">· Clientes ·</span>
-        <h2 class="section-title">Lo que dicen de <span class="accent">nosotros</span></h2>
+        <h2 class="section-title">
+            Lo que dicen de <span class="accent">nosotros</span>
+        </h2>
 
-        <div class="testimonial-carousel" role="region" aria-label="Testimonios de clientes">
-            <div class="testimonial-track">
-                @foreach (var testimonial in Testimonials)
-                {
-                    <div class="testimonial-card">
-                        <img src="@testimonial.AvatarUrl" alt="@testimonial.Name" class="testimonial-avatar">
-                        <p>"@testimonial.Quote"</p>
-                        <h5>— @testimonial.Name, @testimonial.Role</h5>
-                    </div>
-                }
-            </div>
+        <div class="testimonial-track">
+            @foreach (var testimonial in Testimonials)
+            {
+                <div class="testimonial-card">
+                    <img src="@testimonial.AvatarUrl" alt="@testimonial.Name" class="testimonial-avatar" />
+                    <p>"@testimonial.Quote"</p>
+                    <h5>— @testimonial.Name, @testimonial.Role</h5>
+                </div>
+            }
         </div>
     </div>
 </section>
 
-<section class="section equipo">
+<section class="section equipo reveal">
     <div class="container">
         <span class="section-subtitle">· Expertos ·</span>
-        <h2 class="section-title">Conoce a nuestro <span class="accent">equipo</span></h2>
+        <h2 class="section-title">
+            Conoce a nuestro <span class="accent">equipo</span>
+        </h2>
 
         <div class="equipo-grid-horizontal">
             @foreach (var member in Team)
             {
                 <div class="miembro-card">
-                    <img src="@member.AvatarUrl" alt="@member.Name" class="miembro-avatar">
+                    <img src="@member.AvatarUrl" alt="@member.Name" class="miembro-avatar" />
                     <h4>@member.Name</h4>
                     <p>@member.Role</p>
                     <div class="social-links">
                         @if (!string.IsNullOrWhiteSpace(member.LinkedIn))
                         {
-                            <a href="@member.LinkedIn" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="@member.LinkedIn" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
                         }
                         @if (!string.IsNullOrWhiteSpace(member.GitHub))
                         {
-                            <a href="@member.GitHub" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="@member.GitHub" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         }
                         @if (!string.IsNullOrWhiteSpace(member.Twitter))
                         {
-                            <a href="@member.Twitter" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="@member.Twitter" target="_blank" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
                         }
                     </div>
                 </div>
@@ -176,9 +212,11 @@
     </div>
 </section>
 
-<section class="section certificaciones">
+<section class="section certificaciones reveal">
     <div class="container">
-        <h2 class="section-title">Certificaciones y <span class="accent">alianzas</span></h2>
+        <h2 class="section-title text-center">
+            Certificaciones y <span class="accent">alianzas</span>
+        </h2>
 
         <div class="cert-grid-horizontal">
             @foreach (var cert in Certifications)
@@ -188,6 +226,26 @@
                     <span>@cert.Name</span>
                 </div>
             }
+        </div>
+    </div>
+</section>
+
+<section class="section reveal" style="padding-top: 0;">
+    <div class="container">
+        <div class="glass-card cta-final-home">
+            <h2>¿Listo para impulsar tu proyecto?</h2>
+            <p>
+                Cuéntanos qué quieres construir y te ayudamos a convertirlo en una solución real,
+                moderna y segura.
+            </p>
+            <div class="hero-cta" style="justify-content:center;">
+                <NavLink href="/contacto" class="btn btn-primary">
+                    Hablemos
+                </NavLink>
+                <NavLink href="/tecnologia" class="btn btn-outline">
+                    Ver tecnología
+                </NavLink>
+            </div>
         </div>
     </div>
 </section>
@@ -203,6 +261,7 @@
             await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
             await JS.InvokeVoidAsync("itsaPages.initGsap");
             await JS.InvokeVoidAsync("itsaPages.initThreeBackground", "three-container");
+            await JS.InvokeVoidAsync("siteEffects.initReveal");
         }
     }
 
