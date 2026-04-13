@@ -1015,7 +1015,37 @@ img {
 }
 
 @media (max-width: 991.98px) {
-    .contacto-hero {
+    .contacto-hero {/* Estilos para la versión autónoma */
+.animated-bg {
+    background: radial-gradient(circle at top right, rgba(0,170,255,0.15), transparent 40%),
+                radial-gradient(circle at left bottom, rgba(0,194,168,0.08), transparent 30%),
+                var(--bg-primary);
+    background-blend-mode: overlay;
+}
+
+.css-particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatParticle 10s infinite ease-in-out;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    20% { opacity: 0.4; }
+    80% { opacity: 0.4; }
+    100% { transform: translateY(-150px) scale(0.3); opacity: 0; }
+}
+
+/* Aseguramos que .reveal-visible funcione (ya tienes .reveal en tu CSS) */
+.reveal.reveal-visible,
+.servicio-card.reveal-visible,
+.metodologia-item.reveal-visible,
+.glass-card.reveal-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
         min-height: 52vh;
     }
 
@@ -1024,4 +1054,6 @@ img {
         padding: 1.5rem;
     }
 }
+
+    
 }
