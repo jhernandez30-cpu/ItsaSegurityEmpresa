@@ -6,87 +6,164 @@
 
 <PageTitle>Contacto | ITSA Segurity</PageTitle>
 
-<section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, rgba(0,10,20,0.85) 0%, rgba(0,30,50,0.7) 100%);">
+<section class="hero contacto-hero">
     <div id="particles-js"></div>
+
     <div class="hero-content container">
+        <span class="section-subtitle">· Contacto ·</span>
         <h1 class="page-title">Contacta con <span class="accent">nosotros</span></h1>
-        <p class="page-subtitle">Estamos a un mensaje de distancia.</p>
+        <p class="page-subtitle">
+            Estamos a un mensaje de distancia. Cuéntanos qué quieres construir y te ayudamos a convertirlo en una solución real.
+        </p>
     </div>
 </section>
 
-<section class="section">
-    <div class="container grid-2">
-        <div class="contact-info-large glass-card">
-            <h2>Información de contacto</h2>
-            <p><i class="fas fa-map-marker-alt"></i> Managua, Nicaragua</p>
-            <p><i class="fas fa-phone-alt"></i> <a href="tel:+50589871374">+505 8987 1374</a></p>
-            <p><i class="fas fa-envelope"></i> <a href="mailto:info@itsasegurity.com">info@itsasegurity.com</a></p>
+<section class="section reveal">
+    <div class="container grid-2 contacto-grid">
+        <div class="contact-info-large glass-card contact-info-panel">
+            <span class="section-subtitle">· Información ·</span>
+            <h2>Hablemos sobre tu proyecto</h2>
+            <p class="contact-lead">
+                Podemos ayudarte con desarrollo web, software a medida, ciberseguridad, marketing digital e integración de IA.
+            </p>
+
+            <div class="contact-data-list">
+                <div class="contact-data-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Ubicación</strong>
+                        <span>Managua, Nicaragua</span>
+                    </div>
+                </div>
+
+                <div class="contact-data-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Teléfono</strong>
+                        <a href="tel:+50589871374">+505 8987 1374</a>
+                    </div>
+                </div>
+
+                <div class="contact-data-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Correo</strong>
+                        <a href="mailto:info@itsasegurity.com">info@itsasegurity.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-side-card">
+                <h3>¿Qué puedes esperar?</h3>
+                <ul>
+                    <li>Respuesta clara y rápida</li>
+                    <li>Enfoque orientado a negocio</li>
+                    <li>Propuesta moderna y escalable</li>
+                    <li>Comunicación profesional</li>
+                </ul>
+            </div>
 
             <div class="social-large">
-                <a href="https://www.instagram.com/it_segurity" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/share/185VZEYC35/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.tiktok.com/@@it._segurity" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://wa.me/50589871374" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/it_segurity" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/share/185VZEYC35/" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.tiktok.com/@@it._segurity" target="_blank" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://wa.me/50589871374" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
         </div>
 
-        <EditForm EditContext="_editContext" OnValidSubmit="SubmitAsync" class="contact-form">
-            <DataAnnotationsValidator />
+        <div class="glass-card contact-form-panel">
+            <span class="section-subtitle">· Formulario ·</span>
+            <h2>Envíanos un mensaje</h2>
+            <p class="contact-form-copy">
+                Completa el formulario y te responderemos lo antes posible.
+            </p>
 
-            <div class="form-group">
-                <InputText id="name" class="form-input" @bind-Value="_model.Name" />
-                <label for="name">Nombre completo</label>
-                <ValidationMessage For="@(() => _model.Name)" />
-            </div>
+            <EditForm EditContext="_editContext" OnValidSubmit="SubmitAsync" class="contact-form">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
 
-            <div class="form-group">
-                <InputText id="email" class="form-input" @bind-Value="_model.Email" />
-                <label for="email">Correo electrónico</label>
-                <ValidationMessage For="@(() => _model.Email)" />
-            </div>
-
-            <div class="form-group">
-                <InputText id="subject" class="form-input" @bind-Value="_model.Subject" />
-                <label for="subject">Asunto (opcional)</label>
-                <ValidationMessage For="@(() => _model.Subject)" />
-            </div>
-
-            <div class="form-group-row">
-                <label for="service">Tipo de servicio</label>
-                <InputSelect id="service" class="form-select" @bind-Value="_model.Service">
-                    <option value="">Selecciona un servicio</option>
-                    <option value="desarrollo-web">Desarrollo Web</option>
-                    <option value="software-medida">Software a medida</option>
-                    <option value="ciberseguridad">Ciberseguridad</option>
-                    <option value="marketing-digital">Marketing Digital</option>
-                    <option value="ia-datos">IA & Datos</option>
-                    <option value="consultoria">Consultoría</option>
-                </InputSelect>
-            </div>
-            <ValidationMessage For="@(() => _model.Service)" />
-
-            <div class="form-group">
-                <InputTextArea id="message" class="form-input" rows="5" @bind-Value="_model.Message" />
-                <label for="message">Mensaje</label>
-                <ValidationMessage For="@(() => _model.Message)" />
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block" disabled="@_sending">
-                @(_sending ? "Enviando..." : "Enviar mensaje")
-            </button>
-
-            @if (!string.IsNullOrWhiteSpace(_statusMessage))
-            {
-                <div class="form-status" style="display:block">
-                    <p>@_statusMessage</p>
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <InputText id="name" class="form-input" @bind-Value="_model.Name" />
+                    <ValidationMessage For="@(() => _model.Name)" />
                 </div>
-            }
-        </EditForm>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <InputText id="email" class="form-input" @bind-Value="_model.Email" />
+                    <ValidationMessage For="@(() => _model.Email)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Asunto</label>
+                    <InputText id="subject" class="form-input" @bind-Value="_model.Subject" />
+                    <ValidationMessage For="@(() => _model.Subject)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Tipo de servicio</label>
+                    <InputSelect id="service" class="form-select" @bind-Value="_model.Service">
+                        <option value="">Selecciona un servicio</option>
+                        <option value="desarrollo-web">Desarrollo Web</option>
+                        <option value="software-medida">Software a medida</option>
+                        <option value="ciberseguridad">Ciberseguridad</option>
+                        <option value="marketing-digital">Marketing Digital</option>
+                        <option value="ia-datos">IA & Datos</option>
+                        <option value="consultoria">Consultoría</option>
+                    </InputSelect>
+                    <ValidationMessage For="@(() => _model.Service)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <InputTextArea id="message" class="form-input" rows="6" @bind-Value="_model.Message" />
+                    <ValidationMessage For="@(() => _model.Message)" />
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" disabled="@_sending">
+                    @(_sending ? "Enviando..." : "Enviar mensaje")
+                </button>
+
+                @if (!string.IsNullOrWhiteSpace(_statusMessage))
+                {
+                    <div class="form-status" style="display:block">
+                        <p>@_statusMessage</p>
+                    </div>
+                }
+            </EditForm>
+        </div>
+    </div>
+</section>
+
+<section class="section reveal" style="padding-top: 0;">
+    <div class="container">
+        <div class="glass-card cta-final-home">
+            <h2>¿Prefieres hablar directamente?</h2>
+            <p>
+                También puedes escribirnos por WhatsApp o coordinar una llamada para revisar tu idea con más detalle.
+            </p>
+            <div class="hero-cta" style="justify-content:center;">
+                <a href="https://wa.me/50589871374" target="_blank" class="btn btn-primary">
+                    Escribir por WhatsApp
+                </a>
+                <NavLink href="/servicios" class="btn btn-outline">
+                    Ver servicios
+                </NavLink>
+            </div>
+        </div>
     </div>
 </section>
 
 @code {
-    private readonly ContactFormModel _model = new();
+    private ContactFormModel _model = new();
     private EditContext _editContext = default!;
     private bool _initialized;
     private bool _sending;
@@ -103,6 +180,7 @@
         {
             _initialized = true;
             await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
+            await JS.InvokeVoidAsync("siteEffects.initReveal");
         }
     }
 
@@ -117,7 +195,9 @@
             {
                 ["name"] = _model.Name,
                 ["email"] = _model.Email,
-                ["_subject"] = string.IsNullOrWhiteSpace(_model.Subject) ? "Nuevo mensaje desde ITSA Segurity" : _model.Subject,
+                ["_subject"] = string.IsNullOrWhiteSpace(_model.Subject)
+                    ? "Nuevo mensaje desde ITSA Segurity"
+                    : _model.Subject,
                 ["service"] = _model.Service,
                 ["message"] = _model.Message
             };
@@ -135,7 +215,8 @@
             if (response.IsSuccessStatusCode)
             {
                 _statusMessage = "Mensaje enviado correctamente. Te responderemos pronto.";
-                _editContext = new EditContext(new ContactFormModel());
+                _model = new ContactFormModel();
+                _editContext = new EditContext(_model);
             }
             else
             {
