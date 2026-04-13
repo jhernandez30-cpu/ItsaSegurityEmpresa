@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -29,6 +30,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+
+      - name: List project files
+        run: find . -maxdepth 4 \( -name "*.csproj" -o -name "*.sln" \)
 
       - name: Restore
         run: dotnet restore ./ItsaSegurityPortfolio.csproj
