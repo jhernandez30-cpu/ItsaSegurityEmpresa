@@ -1,0 +1,192 @@
+@page "/tecnologia"
+@inject IJSRuntime JS
+
+<PageTitle>Tecnología | ITSA Segurity</PageTitle>
+
+<section class="hero" style="min-height: 60vh; background: linear-gradient(135deg, rgba(0,10,20,0.85) 0%, rgba(0,30,50,0.7) 100%);">
+    <div id="three-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+    <div id="particles-js" style="z-index: 1;"></div>
+
+    <div class="hero-content container" style="position: relative; z-index: 2;">
+        <h1 class="page-title">Tecnología <span class="accent">de punta</span></h1>
+        <p class="page-subtitle">
+            Herramientas modernas, arquitecturas escalables y buenas prácticas para soluciones robustas.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <span class="section-subtitle">· Desarrollo Web ·</span>
+        <h2 class="section-title">Tecnologías para <span class="accent">experiencias digitales</span></h2>
+        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
+            Construimos sitios y aplicaciones web modernas, rápidas y accesibles.
+        </p>
+
+        <div class="grid-3">
+            @foreach (var category in WebCategories)
+            {
+                <div class="categoria-tech">
+                    <h3 class="categoria-title"><i class="@category.Icon"></i> @category.Title</h3>
+                    <div class="tech-cloud" style="justify-content: flex-start;">
+                        @foreach (var item in category.Items)
+                        {
+                            <span class="tech-item">@item</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: #0a0c12;">
+    <div class="container">
+        <span class="section-subtitle">· Desarrollo de Software ·</span>
+        <h2 class="section-title">Soluciones <span class="accent">escalables y robustas</span></h2>
+        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
+            Aplicaciones de escritorio, móviles y cloud con arquitecturas modernas.
+        </p>
+
+        <div class="grid-3">
+            @foreach (var category in SoftwareCategories)
+            {
+                <div class="categoria-tech">
+                    <h3 class="categoria-title"><i class="@category.Icon"></i> @category.Title</h3>
+                    <div class="tech-cloud" style="justify-content: flex-start;">
+                        @foreach (var item in category.Items)
+                        {
+                            <span class="tech-item">@item</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <span class="section-subtitle">· Ciberseguridad ·</span>
+        <h2 class="section-title">Protección <span class="accent">proactiva</span></h2>
+        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
+            Herramientas y técnicas para auditar, proteger y monitorizar entornos digitales.
+        </p>
+
+        <div class="grid-3">
+            @foreach (var category in SecurityCategories)
+            {
+                <div class="categoria-tech">
+                    <h3 class="categoria-title"><i class="@category.Icon"></i> @category.Title</h3>
+                    <div class="tech-cloud" style="justify-content: flex-start;">
+                        @foreach (var item in category.Items)
+                        {
+                            <span class="tech-item">@item</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: #0a0c12;">
+    <div class="container">
+        <h2 class="section-title text-center">Arquitecturas <span class="accent">escalables</span></h2>
+        <p class="text-center" style="margin-bottom: 3rem; color: var(--text-dim);">
+            Diseñamos sistemas preparados para crecer con las mejores prácticas.
+        </p>
+
+        <div class="grid-3">
+            @foreach (var item in Architectures)
+            {
+                <div class="glass-card" style="text-align: center;">
+                    <i class="@item.Icon" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;"></i>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 0.5rem;">@item.Title</h3>
+                    <p style="color: var(--text-dim);">@item.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <span class="section-subtitle">· Workflow ·</span>
+        <h2 class="section-title">Integración y despliegue <span class="accent">continuos</span></h2>
+        <p class="text-center" style="margin-bottom: 2rem; color: var(--text-dim);">
+            Automatizamos pruebas, builds y despliegues con las mejores herramientas. Control de versiones con Git.
+        </p>
+        <div class="tech-cloud" style="justify-content: center;">
+            @foreach (var item in CiCd)
+            {
+                <span class="tech-item">@item</span>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: linear-gradient(135deg, #000408, #001c28); text-align: center;">
+    <div class="container">
+        <h2 style="font-size: 2.8rem; font-weight: 700; margin-bottom: 1.5rem;">
+            ¿Listo para construir algo <span class="accent">increíble</span>?
+        </h2>
+        <p style="font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 2rem;">
+            Contáctanos y descubre cómo nuestra tecnología puede impulsar tu proyecto.
+        </p>
+        <NavLink href="/contacto" class="btn btn-primary">
+            Hablemos <i class="fas fa-arrow-right"></i>
+        </NavLink>
+    </div>
+</section>
+
+@code {
+    private bool _initialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_initialized)
+        {
+            _initialized = true;
+            await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
+            await JS.InvokeVoidAsync("itsaPages.initGsap");
+            await JS.InvokeVoidAsync("itsaPages.initThreeBackground", "three-container");
+        }
+    }
+
+    private readonly List<TechCategory> WebCategories =
+    [
+        new("Frontend", "fas fa-code", ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React", "Vue.js", "Angular", "GSAP", "Three.js", "Tailwind CSS"]),
+        new("Backend", "fas fa-server", ["Node.js", "Python", "Django", "Flask", "PHP (Laravel)", "Ruby on Rails"]),
+        new("Bases de datos", "fas fa-database", ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Firebase", "Elasticsearch"])
+    ];
+
+    private readonly List<TechCategory> SoftwareCategories =
+    [
+        new("Lenguajes & Frameworks", "fas fa-code-branch", ["Java (Spring Boot)", "C# (.NET Core)", "Go", "Rust", "Python (Django, Flask)", "Node.js"]),
+        new("DevOps & Cloud", "fas fa-cloud", ["Docker", "Kubernetes", "AWS", "Azure", "Google Cloud", "Terraform", "Ansible"]),
+        new("Testing & QA", "fas fa-vial", ["Jest", "Cypress", "Playwright", "Selenium", "JUnit", "Postman"])
+    ];
+
+    private readonly List<TechCategory> SecurityCategories =
+    [
+        new("Pentesting", "fas fa-user-secret", ["Kali Linux", "Metasploit", "Burp Suite", "Nmap", "Wireshark", "John the Ripper"]),
+        new("Análisis de vulnerabilidades", "fas fa-search", ["Nessus", "OpenVAS", "Qualys", "OWASP ZAP", "Snyk", "SonarQube"]),
+        new("SIEM & Monitorización", "fas fa-chart-line", ["Splunk", "ELK Stack", "Prometheus", "Grafana", "Wazuh"])
+    ];
+
+    private readonly List<ArchitectureItem> Architectures =
+    [
+        new("Microservicios", "fas fa-cubes", "Componentes independientes, desacoplados y escalables individualmente."),
+        new("Serverless", "fas fa-cloud-upload-alt", "Ejecución de código sin gestionar servidores, pago por uso."),
+        new("Seguridad por capas", "fas fa-shield-alt", "Protección en cada nivel: red, aplicación, datos.")
+    ];
+
+    private readonly List<string> CiCd =
+    [
+        "GitHub Actions", "GitLab CI", "Jenkins", "CircleCI", "Git"
+    ];
+
+    private sealed record TechCategory(string Title, string Icon, List<string> Items);
+    private sealed record ArchitectureItem(string Title, string Icon, string Description);
+}
