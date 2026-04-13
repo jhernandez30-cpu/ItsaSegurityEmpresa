@@ -176,11 +176,18 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!_initialized)
+        if (firstRender && !_initialized)
         {
             _initialized = true;
-            await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
-            await JS.InvokeVoidAsync("siteEffects.initReveal");
+            try
+            {
+                await JS.InvokeVoidAsync("itsaPages.initParticles", "particles-js");
+                await JS.InvokeVoidAsync("siteEffects.initReveal");
+            }
+            catch
+            {
+                // Las funciones JS se cargarán cuando estén disponibles
+            }
         }
     }
 
